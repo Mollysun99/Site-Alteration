@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Site Alteration</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fbb12f;
+            color: white;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .line {
+            height: 16vw;
+            background-color: white;
+            ;
+            padding: 1px;
+            margin: 8vw;
+        }
+
+        #self {
+            display: absolute;
+            width: 100px;
+            height: 100px;
+            top: 0;
+            margin: 0;
+            left: 0;
+            position: relative;
+            border-radius: 50%;
+            color: black;
+            font-weight: bold;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        p {
+            position: absolute;
+            color: black;
+            background-color: transparent;
+            font-weight: bolder;
+            text-align: center;
+            font-size: 100px;
+        }
+
+        /* .btn{
+            color: black;
+            box-sizing: border-box;
+            border: 1px solid #f0f0f0;
+            background: #fff;
+            border-radius: 7px;
+            width: 6vw;
+            height: 6vw;
+            opacity: .85;
+            box-shadow: 2px 1px 10px 0 rgb(0 0 0 / 20%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } */
+
+        #up_btn {
+            position: absolute;
+            top: 10px;
+            left: 47vw;
+            color: black;
+            box-sizing: border-box;
+            border: 1px solid #f0f0f0;
+            background: #fff;
+            border-radius: 7px;
+            width: 6vw;
+            height: 6vw;
+            opacity: .85;
+            box-shadow: 2px 1px 10px 0 rgb(0 0 0 / 20%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #down_btn {
+            position: absolute;
+            bottom: 10px;
+            left: 47vw;
+            color: black;
+            box-sizing: border-box;
+            border: 1px solid #f0f0f0;
+            background: #fff;
+            border-radius: 7px;
+            width: 6vw;
+            height: 6vw;
+            opacity: .85;
+            box-shadow: 2px 1px 10px 0 rgb(0 0 0 / 20%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #left_btn {
+            position: absolute;
+            top: 40vh;
+            left: 10px;
+            color: black;
+            box-sizing: border-box;
+            border: 1px solid #f0f0f0;
+            background: #fff;
+            border-radius: 7px;
+            width: 6vw;
+            height: 6vw;
+            opacity: .85;
+            box-shadow: 2px 1px 10px 0 rgb(0 0 0 / 20%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #right_btn {
+            position: absolute;
+            top: 40vh;
+            right: 10px;
+            color: black;
+            box-sizing: border-box;
+            border: 1px solid #f0f0f0;
+            background: #fff;
+            border-radius: 7px;
+            width: 6vw;
+            height: 6vw;
+            opacity: .85;
+            box-shadow: 2px 1px 10px 0 rgb(0 0 0 / 20%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .right_btn:focus {
+            color: yellow;
+        }
+
+        #another{
+            display: none;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+</head>
+
+<body>
+    <!-- <div id="messages">
+        No Messages Yet
+    </div> -->
+    <input type="text" id="message" name="message">
+    <input type="submit" value="submit" id="submitBtn">
+
+    <main>
+        <div id="self">
+            <p>Myself</p>
+        </div>
+    </main>
+
+    <div class="btn" id="up_btn">W</div>
+    <div class="btn" id="down_btn">S</div>
+    <div class="btn" id="left_btn">A</div>
+    <div class="btn" id="right_btn">D</div>
+
+    <div id="another">
+        <p>I'm here too</p>
+    </div>
+
+
+</body>
+<script>
+    let input = ''
+    document.addEventListener("keydown", dealWithKeyboard, false);
+    let leftness = 0;
+    let topness = 0;
+
+    rightBtn = document.querySelector("right_btn");
+
+    function dealWithKeyboard(input) {
+        let self = document.getElementById("self");
+        if (input.keyCode === 68) { //d
+            leftness = leftness + 10;
+            self.style.left = leftness + "px";
+            document.getElementById("right_btn").style.backgroundColor = 'gray';
+            document.getElementById("right_btn").style.color = 'white';
+            document.getElementById("left_btn").style.backgroundColor = '#fff';
+            document.getElementById("left_btn").style.color = 'black';
+            document.getElementById("down_btn").style.backgroundColor = '#fff';
+            document.getElementById("down_btn").style.color = 'black';
+            document.getElementById("up_btn").style.backgroundColor = '#fff';
+            document.getElementById("up_btn").style.color = 'black';
+        } else if (input.keyCode === 65) { //a
+            leftness = leftness - 10;
+            self.style.left = leftness + "px";
+            document.getElementById("right_btn").style.backgroundColor = '#fff';
+            document.getElementById("right_btn").style.color = 'black';
+            document.getElementById("left_btn").style.backgroundColor = 'gray';
+            document.getElementById("left_btn").style.color = 'white';
+            document.getElementById("down_btn").style.backgroundColor = '#fff';
+            document.getElementById("down_btn").style.color = 'black';
+            document.getElementById("up_btn").style.backgroundColor = '#fff';
+            document.getElementById("up_btn").style.color = 'black';
+        } else if (input.keyCode === 83) { //s
+            topness = topness + 10;
+            self.style.top = topness + "px";
+            document.getElementById("right_btn").style.backgroundColor = '#fff';
+            document.getElementById("right_btn").style.color = 'black';
+            document.getElementById("left_btn").style.backgroundColor = '#fff';
+            document.getElementById("left_btn").style.color = 'black';
+            document.getElementById("down_btn").style.backgroundColor = 'gray';
+            document.getElementById("down_btn").style.color = 'white';
+            document.getElementById("up_btn").style.backgroundColor = '#fff';
+            document.getElementById("up_btn").style.color = 'black';
+        } else if (input.keyCode === 87) { //w
+            topness = topness - 10;
+            self.style.top = topness + "px";
+            document.getElementById("right_btn").style.backgroundColor = '#fff';
+            document.getElementById("right_btn").style.color = 'black';
+            document.getElementById("left_btn").style.backgroundColor = '#fff';
+            document.getElementById("left_btn").style.color = 'black';
+            document.getElementById("down_btn").style.backgroundColor = '#fff';
+            document.getElementById("down_btn").style.color = 'black';
+            document.getElementById("up_btn").style.backgroundColor = 'gray';
+            document.getElementById("up_btn").style.color = 'white';
+        }
+    }
+
+    let submitBtn = document.querySelector("#submitBtn");
+    let text = document.querySelector("#self");
+    let anotherText = document.querySelector("#another");
+
+    submitBtn.addEventListener('click', () => {
+        text.innerHTML = document.getElementById("message").value;
+        anotherText.style.display = block;
+        anotherText.innerHTML = document.getElementById("message").value;
+
+
+    });
+
+
+
+</script>
+
+</html>
